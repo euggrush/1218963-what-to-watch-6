@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Eugene Grushin](https://up.htmlacademy.ru/react/6/user/1218963).
-* Наставник: `Неизвестно`.
+* Наставник: [Светлана Блинова](https://htmlacademy.ru/profile/id1432187).
 
 ---
 
