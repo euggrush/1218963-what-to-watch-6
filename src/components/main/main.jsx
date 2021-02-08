@@ -1,14 +1,9 @@
+/* eslint-disable new-cap */
 import React from 'react';
+import PropTypes from 'prop-types';
 import FilmCard from '../../components/card';
 
-let filmListArray = [];
-let card = FilmCard();
-
-for (let i = 0; i < 20; i++) {
-  filmListArray.push(card);
-}
-
-const MainPage = () => {
+const MainPage = (props) => {
 
   return <React.Fragment>
     <section className="movie-card">
@@ -42,10 +37,10 @@ const MainPage = () => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+            <h2 className="movie-card__title">{props.title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">Drama</span>
-              <span className="movie-card__year">2014</span>
+              <span className="movie-card__genre">{props.genre}</span>
+              <span className="movie-card__year">{props.date}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -107,7 +102,7 @@ const MainPage = () => {
 
         <div className="catalog__movies-list">
 
-          {filmListArray.map((item) => item)}
+          {FilmCard().map((item) => item)}
 
         </div>
 
@@ -134,6 +129,11 @@ const MainPage = () => {
 
 };
 
+MainPage.propTypes = {
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  date: PropTypes.number.isRequired
+};
+
 
 export default MainPage;
-

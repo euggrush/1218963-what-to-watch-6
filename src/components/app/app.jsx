@@ -1,9 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MainPage from '../main/main';
-import FilmCard from '../card';
 
-const App = () => {
-  return MainPage();
+const App = (props) => {
+
+  return (
+    <MainPage
+      title = {props.title}
+      genre ={ props.genre}
+      date = {props.date}
+    />
+  );
 };
 
 export default App;
+
+App.propTypes = {
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  date: PropTypes.number.isRequired
+};
