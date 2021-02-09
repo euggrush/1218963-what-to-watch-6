@@ -4,11 +4,13 @@ import MainPage from '../main/main';
 
 const App = (props) => {
 
+  const {title, genre, date} = props;
+
   return (
     <MainPage
-      title = {props.title}
-      genre ={ props.genre}
-      date = {props.date}
+      title = {title}
+      genre={genre}
+      date={date}
     />
   );
 };

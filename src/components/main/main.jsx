@@ -102,7 +102,7 @@ const MainPage = (props) => {
 
         <div className="catalog__movies-list">
 
-          {FilmCard().map((item) => item)}
+          {Array(20).fill(null).map((i) => <FilmCard key={i}/>)}
 
         </div>
 
