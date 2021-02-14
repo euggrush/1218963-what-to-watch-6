@@ -126,3 +126,6 @@ const MyList = () => {
     </div>
   </React.Fragment>;
 };
+
+export default MyList;
+
