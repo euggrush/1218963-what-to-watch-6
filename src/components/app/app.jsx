@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
-import MainPage from '../main/main';
+import MainPage from '../main-page/main-page';
 import SignIn from '../login/login';
 import MyList from '../my-list/my-list';
 import Film from '../film/film';
@@ -16,7 +16,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="">
+        <Route exact path="/">
           <MainPage
             title={title}
             genre={genre}
@@ -26,16 +26,16 @@ const App = (props) => {
         <Route exact path="/login">
           <SignIn />
         </Route>
-        <Route exact path="/mylist">
+        <Route exact path="/my-list">
           <MyList />
         </Route>
-        <Route exact path="/film">
+        <Route exact path="/film/:id">
           <Film />
         </Route>
-        <Route exact path="/review">
+        <Route exact path="/film/:id/review">
           <AddReview />
         </Route>
-        <Route exact path="/player">
+        <Route exact path="/player/:id">
           <Player />
         </Route>
         <Route>
