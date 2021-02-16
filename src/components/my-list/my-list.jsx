@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MyList = () => {
-  return <React.Fragment>
+  return (
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
@@ -124,7 +124,7 @@ const MyList = () => {
         </div>
       </footer>
     </div>
-  </React.Fragment>;
+  );
 };
 
 export default MyList;

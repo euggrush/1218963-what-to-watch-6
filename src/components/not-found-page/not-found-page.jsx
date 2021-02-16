@@ -1,11 +1,11 @@
 import React from 'react';
 
 const NotFoundPage = () => {
-  return <React.Fragment>
+  return (
     <div>
-      `404 Not Found`;
+      404 Not Found
     </div>
-  </React.Fragment>;
+  );
 };
 
 export default NotFoundPage;
