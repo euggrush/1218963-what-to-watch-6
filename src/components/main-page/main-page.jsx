@@ -1,9 +1,13 @@
 /* eslint-disable new-cap */
 import React from 'react';
 import PropTypes from 'prop-types';
-import FilmCard from '../../components/film-card/film-card';
+// import FilmCard from '../../components/film-card/film-card';
+import FilmList from '../film-list/film-list';
 
 const MainPage = (props) => {
+
+  const {title, genre, date, filmsArray} = props;
+
 
   return (
     <>
@@ -38,10 +42,10 @@ const MainPage = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{props.title}</h2>
+              <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{props.genre}</span>
-                <span className="movie-card__year">{props.date}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{date}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -103,7 +107,10 @@ const MainPage = (props) => {
 
           <div className="catalog__movies-list">
 
-            {Array(20).fill(null).map((i) => <FilmCard key={i} />)}
+
+            {
+              Array(1).fill(null).map((i) => <FilmList key={i} filmsArray={filmsArray} title={title} genre={genre} date={date}/>)
+            }
 
           </div>
 
@@ -133,7 +140,8 @@ const MainPage = (props) => {
 MainPage.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired
+  date: PropTypes.string.isRequired,
+  filmsArray: PropTypes.array.isRequired
 };
 
 
