@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FilmList from '../film-list/film-list';
 
 const MyList = (props) => {
-  const {title, filmPictureSrc} = props;
+  const {filmsArray} = props;
 
   return (
     <div className="user-page">
@@ -28,14 +29,9 @@ const MyList = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <div className="catalog__movies-list">
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-            </h3>
-          </article>
+          {
+            Array(1).fill(null).map((i) => <FilmList key={i} filmsArray={filmsArray} />)
+          }
         </div>
       </section>
 
@@ -59,9 +55,6 @@ const MyList = (props) => {
 export default MyList;
 
 MyList.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  filmPictureSrc: PropTypes.string.isRequired
+  filmsArray: PropTypes.array.isRequired
 };
 

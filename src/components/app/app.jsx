@@ -27,19 +27,10 @@ const App = (props) => {
         <Route exact path="/login">
           <SignIn />
         </Route>
-
         <Route exact path="/my-list">
-          {filmsArray.map((item) => {
-            return (
-              <MyList
-                key={item.id}
-                title={item.title}
-                genre={item.genre}
-                date={item.date}
-                filmPictureSrc={item.filmPictureSrc}
-              />
-            );
-          })}
+          <MyList
+            filmsArray={filmsArray}
+          />
         </Route>
         <Route exact path="/film/:id">
           <Film />
@@ -48,7 +39,9 @@ const App = (props) => {
           <AddReview />
         </Route>
         <Route exact path="/player/:id">
-          <Player />
+          <Player
+            filmsArray={filmsArray}
+          />
         </Route>
         <Route>
           <NotFoundPage />

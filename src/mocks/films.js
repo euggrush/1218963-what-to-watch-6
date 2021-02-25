@@ -1,6 +1,6 @@
 const filmsArray = [
   {
-    id: 2,
+    id: 0,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     genre: ``,
     date: `2018`,
@@ -17,7 +17,7 @@ const filmsArray = [
     rating: `6.6`
   },
   {
-    id: 3,
+    id: 1,
     title: `Bohemian Rhapsody`,
     genre: ``,
     date: ``,
@@ -29,7 +29,7 @@ const filmsArray = [
     overview: ``,
     rating: ``
   }, {
-    id: 4,
+    id: 2,
     title: `Macbeth`,
     genre: ``,
     date: ``,
@@ -41,7 +41,7 @@ const filmsArray = [
     overview: ``,
     rating: ``
   }, {
-    id: 5,
+    id: 3,
     title: `Aviator`,
     genre: ``,
     date: ``,
@@ -53,7 +53,7 @@ const filmsArray = [
     overview: ``,
     rating: ``
   }, {
-    id: 6,
+    id: 4,
     title: `We need to talk about Kevin`,
     genre: ``,
     date: ``,
@@ -65,7 +65,7 @@ const filmsArray = [
     overview: ``,
     rating: ``
   }, {
-    id: 7,
+    id: 5,
     title: `What We Do in the Shadows`,
     genre: ``,
     date: ``,
@@ -77,7 +77,7 @@ const filmsArray = [
     overview: ``,
     rating: ``
   }, {
-    id: 8,
+    id: 6,
     title: `Revenant`,
     genre: ``,
     date: ``,
@@ -90,7 +90,7 @@ const filmsArray = [
     rating: ``
   },
   {
-    id: 9,
+    id: 7,
     title: `Johnny English`,
     genre: ``,
     date: ``,

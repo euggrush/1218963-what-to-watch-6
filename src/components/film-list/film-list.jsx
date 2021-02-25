@@ -25,9 +25,5 @@ const FilmList = (props) => {
 export default FilmList;
 
 FilmList.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  filmsArray: PropTypes.array.isRequired,
-  filmPictureSrc: PropTypes.string.isRequired
+  filmsArray: PropTypes.array.isRequired
 };
