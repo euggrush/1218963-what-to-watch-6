@@ -1,12 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Film = () => {
+const Film = (props) => {
+
+  let currentUrlId = window.location.href.split(`/`).pop();
+  const {filmsArray} = props;
+
   return (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={filmsArray[currentUrlId].bgSrc} alt={filmsArray[currentUrlId].title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -27,10 +32,10 @@ const Film = () => {
           </header>
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{filmsArray[currentUrlId].title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{filmsArray[currentUrlId].genre}</span>
+                <span className="movie-card__year">{filmsArray[currentUrlId].date}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -54,7 +59,7 @@ const Film = () => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={filmsArray[currentUrlId].filmPictureSrc} alt={filmsArray[currentUrlId].title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -157,3 +162,7 @@ const Film = () => {
 };
 
 export default Film;
+
+Film.propTypes = {
+  filmsArray: PropTypes.array.isRequired
+};

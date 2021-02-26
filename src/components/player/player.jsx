@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 const Player = (props) => {
 
-  let currentUrl = window.location.href;
-  let currentUrlId = currentUrl.split(`/`).pop();
+  let currentUrlId = window.location.href.split(`/`).pop();
 
   const {filmsArray} = props;
 

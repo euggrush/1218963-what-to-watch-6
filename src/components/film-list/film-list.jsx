@@ -16,6 +16,7 @@ const FilmList = (props) => {
           genre={item.genre}
           date={item.date}
           filmPictureSrc={item.filmPictureSrc}
+          filmId={item.id}
         />
       );
     })
