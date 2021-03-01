@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FilmList from '../film-list/film-list';
+import FilmsList from '../films-list/films-list';
 
 const MyList = (props) => {
-  const {filmsArray} = props;
+  const {films} = props;
 
   return (
     <div className="user-page">
@@ -29,9 +29,7 @@ const MyList = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <div className="catalog__movies-list">
-          {
-            Array(1).fill(null).map((i) => <FilmList key={i} filmsArray={filmsArray} />)
-          }
+          <FilmsList films={films} />
         </div>
       </section>
 
@@ -55,6 +53,6 @@ const MyList = (props) => {
 export default MyList;
 
 MyList.propTypes = {
-  filmsArray: PropTypes.array.isRequired
+  films: PropTypes.array.isRequired
 };
 

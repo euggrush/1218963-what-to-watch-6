@@ -11,7 +11,7 @@ import NotFoundPage from '../not-found-page/not-found-page';
 
 const App = (props) => {
 
-  const {title, genre, date, filmsArray} = props;
+  const {title, genre, date, films} = props;
 
   return (
     <BrowserRouter>
@@ -21,7 +21,7 @@ const App = (props) => {
             title={title}
             genre={genre}
             date={date}
-            filmsArray={filmsArray}
+            films={films}
           />
         </Route>
         <Route exact path="/login">
@@ -29,22 +29,22 @@ const App = (props) => {
         </Route>
         <Route exact path="/my-list">
           <MyList
-            filmsArray={filmsArray}
+            films={films}
           />
         </Route>
         <Route exact path="/film/:id">
           <Film
-            filmsArray={filmsArray}
+            films={films}
           />
         </Route>
         <Route exact path="/film/:id/review">
           <AddReview
-            filmsArray={filmsArray}
+            films={films}
           />
         </Route>
         <Route exact path="/player/:id">
           <Player
-            filmsArray={filmsArray}
+            films={films}
           />
         </Route>
         <Route>
@@ -61,5 +61,5 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  filmsArray: PropTypes.array.isRequired
+  films: PropTypes.array.isRequired
 };

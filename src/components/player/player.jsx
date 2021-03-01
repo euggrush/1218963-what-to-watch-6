@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {useParams} from "react-router-dom";
 
-const Player = (props) => {
+const Player = ({films}) => {
 
-  let currentUrlId = window.location.href.split(`/`).pop();
-
-  const {filmsArray} = props;
+  const {id} = useParams();
+  const filmData = films[id];
+  const {filmVideoSrc, runTime} = filmData;
 
   return (
     <React.Fragment>
       <div className="player">
-        <video src={filmsArray[currentUrlId].filmVideoSrc} className="player__video" poster="img/player-poster.jpg"></video>
+        <video src={filmVideoSrc} className="player__video" poster="img/player-poster.jpg"></video>
 
         <button type="button" className="player__exit">Exit</button>
 
@@ -20,7 +21,7 @@ const Player = (props) => {
               <progress className="player__progress" value="30" max="100"></progress>
               <div className="player__toggler" style={{left: `30%`}}>Toggler</div>
             </div>
-            <div className="player__time-value">{filmsArray[currentUrlId].runTime}</div>
+            <div className="player__time-value">{runTime}</div>
           </div>
 
           <div className="player__controls-row">
@@ -48,6 +49,6 @@ const Player = (props) => {
 export default Player;
 
 Player.propTypes = {
-  filmsArray: PropTypes.array.isRequired
+  films: PropTypes.array.isRequired
 };
 

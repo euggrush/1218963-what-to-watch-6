@@ -1,13 +1,12 @@
 /* eslint-disable new-cap */
 import React from 'react';
 import PropTypes from 'prop-types';
-// import FilmCard from '../../components/film-card/film-card';
-import FilmList from '../film-list/film-list';
+import FilmsList from '../films-list/films-list';
+import filmsShape from '../../types';
 
 const MainPage = (props) => {
 
-  const {title, genre, date, filmsArray} = props;
-
+  const {title, genre, date, films} = props;
 
   return (
     <>
@@ -107,10 +106,7 @@ const MainPage = (props) => {
 
           <div className="catalog__movies-list">
 
-
-            {
-              Array(1).fill(null).map((i) => <FilmList key={i} filmsArray={filmsArray} title={title} genre={genre} date={date}/>)
-            }
+            <FilmsList films={films} title={title} genre={genre} date={date}/>
 
           </div>
 
@@ -141,7 +137,7 @@ MainPage.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  filmsArray: PropTypes.array.isRequired
+  films: PropTypes.arrayOf(filmsShape)
 };
 
 

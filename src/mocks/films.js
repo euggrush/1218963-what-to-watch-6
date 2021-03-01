@@ -1,4 +1,4 @@
-const filmsArray = [
+const films = [
   {
     id: 0,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -112,4 +112,4 @@ const filmsArray = [
   }
 ];
 
-export default filmsArray;
+export default films;

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 
-const FilmCard = (props) => {
-  const {title, filmPictureSrc, filmId} = props;
+const FilmCard = (movie) => {
+  const {title, filmPictureSrc, filmId} = movie;
   return (
 
-    <React.Fragment>
+    <>
       <article className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image">
           <img src={filmPictureSrc} alt="" width="280" height="175" />
@@ -17,7 +17,7 @@ const FilmCard = (props) => {
           <a className="small-movie-card__link" href="movie-page.html"><Link to={`film/${filmId}`}>{title}</Link></a>
         </h3>
       </article>
-    </React.Fragment>
+    </>
   );
 };
 
@@ -30,3 +30,4 @@ FilmCard.propTypes = {
   filmPictureSrc: PropTypes.string.isRequired,
   filmId: PropTypes.number.isRequired
 };
+

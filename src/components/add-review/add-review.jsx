@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FeedbackForm from '../feedback-form/feedback-form';
+import filmsShape from '../../types';
+import {useParams} from "react-router-dom";
 
-const AddReview = (props) => {
+const AddReview = ({films}) => {
 
-  let currentUrlId = window.location.href.split(`film/`).pop().split(`/`).shift();
-
-  const {filmsArray} = props;
+  const {id} = useParams();
+  const filmData = films[id];
+  const {bgSrc, title, filmPictureSrc} = filmData;
 
   return (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
           <div className="movie-card__bg">
-            <img src={filmsArray[currentUrlId].bgSrc} alt={filmsArray[currentUrlId].title} />
+            <img src={bgSrc} alt={title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -30,7 +32,7 @@ const AddReview = (props) => {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="movie-page.html" className="breadcrumbs__link">{filmsArray[currentUrlId].title}</a>
+                  <a href="movie-page.html" className="breadcrumbs__link">{title}</a>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -46,7 +48,7 @@ const AddReview = (props) => {
           </header>
 
           <div className="movie-card__poster movie-card__poster--small">
-            <img src={filmsArray[currentUrlId].filmPictureSrc} alt={filmsArray[currentUrlId].title} width="218" height="327" />
+            <img src={filmPictureSrc} alt={title} width="218" height="327" />
           </div>
         </div>
 
@@ -60,5 +62,5 @@ const AddReview = (props) => {
 export default AddReview;
 
 AddReview.propTypes = {
-  filmsArray: PropTypes.array.isRequired
+  films: PropTypes.arrayOf(filmsShape)
 };

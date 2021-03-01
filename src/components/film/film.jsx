@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import filmsShape from '../../types';
+import {Link, useParams} from "react-router-dom";
 
-const Film = (props) => {
+const Film = ({films}) => {
 
-  let currentUrlId = window.location.href.split(`/`).pop();
-  const {filmsArray} = props;
+  const {id} = useParams();
+  const filmData = films[id];
+  const {bgSrc, title, filmPictureSrc, genre, date} = filmData;
 
   return (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={filmsArray[currentUrlId].bgSrc} alt={filmsArray[currentUrlId].title} />
+            <img src={bgSrc} alt={title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -32,10 +35,10 @@ const Film = (props) => {
           </header>
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{filmsArray[currentUrlId].title}</h2>
+              <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{filmsArray[currentUrlId].genre}</span>
-                <span className="movie-card__year">{filmsArray[currentUrlId].date}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{date}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -43,7 +46,9 @@ const Film = (props) => {
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
-                  <span>Play</span>
+                  <span>
+                    <Link to={`/player/${id}`}>Play</Link>
+                  </span>
                 </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
@@ -51,7 +56,9 @@ const Film = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <a href="add-review.html" className="btn movie-card__button">
+                  <Link to={`${id}/review`}>Add review</Link>
+                </a>
               </div>
             </div>
           </div>
@@ -59,7 +66,7 @@ const Film = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={filmsArray[currentUrlId].filmPictureSrc} alt={filmsArray[currentUrlId].title} width="218" height="327" />
+              <img src={filmPictureSrc} alt={title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -164,5 +171,5 @@ const Film = (props) => {
 export default Film;
 
 Film.propTypes = {
-  filmsArray: PropTypes.array.isRequired
+  films: PropTypes.arrayOf(filmsShape)
 };
