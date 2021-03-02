@@ -13,8 +13,7 @@ const FilmCard = ({movie}) => {
           <img src={filmPictureSrc} alt="" width="280" height="175" />
         </div>
         <h3 className="small-movie-card__title">
-
-          <a className="small-movie-card__link" href="movie-page.html"><Link to={`film/${filmId}`}>{title}</Link></a>
+          <Link className="small-movie-card__link" to={`film/${filmId}`}>{title}</Link>
         </h3>
       </article>
     </>
