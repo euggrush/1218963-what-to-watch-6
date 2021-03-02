@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 import React from 'react';
 import PropTypes from 'prop-types';
 import FilmsList from '../films-list/films-list';
@@ -106,7 +105,7 @@ const MainPage = (props) => {
 
           <div className="catalog__movies-list">
 
-            <FilmsList films={films} title={title} genre={genre} date={date}/>
+            <FilmsList films={films}/>
 
           </div>
 

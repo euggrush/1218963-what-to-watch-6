@@ -8,6 +8,7 @@ import Film from '../film/film';
 import AddReview from '../add-review/add-review';
 import Player from '../player/player';
 import NotFoundPage from '../not-found-page/not-found-page';
+import filmsShape from '../../types';
 
 const App = (props) => {
 
@@ -61,5 +62,5 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  films: PropTypes.array.isRequired
+  films: PropTypes.arrayOf(filmsShape)
 };

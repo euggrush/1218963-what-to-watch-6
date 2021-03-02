@@ -9,14 +9,7 @@ const FilmsList = ({films}) => {
 
     films.map((movie) => {
       return (
-        <FilmCard
-          key={movie.id}
-          title={movie.title}
-          genre={movie.genre}
-          date={movie.date}
-          filmPictureSrc={movie.filmPictureSrc}
-          filmId={movie.id}
-        />
+        <FilmCard key={movie.id} movie={movie} />
       );
     })
   );

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import filmsShape from '../../types';
 
-
-const FilmCard = (movie) => {
+const FilmCard = ({movie}) => {
   const {title, filmPictureSrc, filmId} = movie;
   return (
 
@@ -24,10 +24,6 @@ const FilmCard = (movie) => {
 export default FilmCard;
 
 FilmCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  filmPictureSrc: PropTypes.string.isRequired,
-  filmId: PropTypes.number.isRequired
+  movie: PropTypes.arrayOf(filmsShape)
 };
 
