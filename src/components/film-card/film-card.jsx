@@ -2,21 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import filmsShape from '../../types';
+import VideoPlayer from '../video-player/video-player';
 
 const FilmCard = ({movie}) => {
-  const {title, filmPictureSrc, filmId} = movie;
+  const {title, filmPictureSrc, id, filmVideoSrc} = movie;
   return (
 
-    <>
+    <React.Fragment>
       <article className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image">
-          <img src={filmPictureSrc} alt="" width="280" height="175" />
+          <VideoPlayer
+            filmVideoSrc={filmVideoSrc}
+            filmPictureSrc={filmPictureSrc}
+          />
         </div>
         <h3 className="small-movie-card__title">
-          <Link className="small-movie-card__link" to={`film/${filmId}`}>{title}</Link>
+          <Link className="small-movie-card__link" to={`film/${id}`}>{title}</Link>
         </h3>
       </article>
-    </>
+    </React.Fragment>
   );
 };
 
