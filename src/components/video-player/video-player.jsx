@@ -1,27 +1,31 @@
-import React, {Fragment, useState, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 
-const VideoPlayer = ({defaultIsPlaying, filmVideoSrc, filmPictureSrc}) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(defaultIsPlaying);
-  const audioRef = useRef();
+const VideoPlayer = ({id, filmVideoSrc, filmPictureSrc, isPlaying}) => {
+
+  const videoRef = useRef();
+
+  useEffect(() => {
+    if (isPlaying) {
+      videoRef.current.play();
+      return;
+    }
+
+    videoRef.current.pause();
+  }, [isPlaying]);
 
   return (
-    <Fragment>
-      <video controls width="280" height="175" muted="muted" poster={filmPictureSrc} >
-
-        <source src={filmVideoSrc}
-          type="video/mp4" />
-
-      </video>
-    </Fragment>
+    <video className={`video-${id}`} width="280" height="175" poster={filmPictureSrc} muted ref={videoRef} >
+      <source src={filmVideoSrc} type="video/mp4" />
+    </video>
   );
 };
 
 VideoPlayer.propTypes = {
+  id: PropTypes.number.isRequired,
   filmVideoSrc: PropTypes.string.isRequired,
   filmPictureSrc: PropTypes.string.isRequired,
-  defaultIsPlaying: PropTypes.bool.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
 };
 
 export default VideoPlayer;
