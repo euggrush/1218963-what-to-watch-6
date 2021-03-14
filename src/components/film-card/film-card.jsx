@@ -21,12 +21,15 @@ const FilmCard = ({movie}) => {
         }}
       >
         <div className="small-movie-card__image">
-          <VideoPlayer
-            id={id}
-            filmVideoSrc={filmVideoSrc}
-            filmPictureSrc={filmPictureSrc}
-            isPlaying={isPlayerActive}
-          />
+          {isPlayerActive
+            ? <VideoPlayer
+              id={id}
+              filmVideoSrc={filmVideoSrc}
+              filmPictureSrc={filmPictureSrc}
+              isPlaying={isPlayerActive}
+            />
+
+            : <img src={filmPictureSrc} alt={title} width="280" height="175" />}
         </div>
         <h3 className="small-movie-card__title">
           <Link className="small-movie-card__link" to={`film/${id}`}>{title}</Link>

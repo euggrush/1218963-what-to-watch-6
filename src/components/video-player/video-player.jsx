@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 
-const VideoPlayer = ({id, filmVideoSrc, filmPictureSrc, isPlaying}) => {
+const VideoPlayer = ({id, filmVideoSrc, isPlaying}) => {
 
   const videoRef = useRef();
 
@@ -15,7 +15,7 @@ const VideoPlayer = ({id, filmVideoSrc, filmPictureSrc, isPlaying}) => {
   }, [isPlaying]);
 
   return (
-    <video className={`video-${id}`} width="280" height="175" poster={filmPictureSrc} muted ref={videoRef} >
+    <video className={`video-${id}`} width="280" height="175" muted ref={videoRef} >
       <source src={filmVideoSrc} type="video/mp4" />
     </video>
   );
