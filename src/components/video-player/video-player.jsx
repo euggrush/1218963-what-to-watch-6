@@ -28,4 +28,5 @@ VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
 };
 
+
 export default VideoPlayer;
