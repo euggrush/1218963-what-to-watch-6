@@ -9,18 +9,26 @@ const FilmCard = ({movie}) => {
   const [isPlayerActive, setPlayerActive] = useState(false);
 
   const {title, filmPictureSrc, id, filmVideoSrc} = movie;
+
+  let timerId;
+
+  const handleMouseOver = () => {
+    timerId = setTimeout(() => {
+      setPlayerActive(true);
+    }, 1000);
+  };
+
+  const handleMouseOut = () => {
+    clearTimeout(timerId);
+    setPlayerActive(false);
+  };
+
   return (
 
     <React.Fragment>
       <article className="small-movie-card catalog__movies-card"
-        onMouseOver={() => {
-          isPlayerActive = setTimeout(() => {
-            setPlayerActive(true);
-          }, 1000);
-        }}
-        onMouseOut={() => {
-          isPlayerActive = setPlayerActive(false);
-        }}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
       >
         <div className="small-movie-card__image">
           {
