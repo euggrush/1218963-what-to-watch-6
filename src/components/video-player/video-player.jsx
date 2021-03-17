@@ -8,11 +8,10 @@ const VideoPlayer = ({id, filmVideoSrc, isPlaying}) => {
   useEffect(() => {
     if (isPlaying) {
       videoRef.current.play();
-      return;
     }
 
-    videoRef.current.pause();
-  }, [isPlaying]);
+    return () => videoRef.current.pause();
+  }, []);
 
   return (
     <video className={`video-${id}`} width="280" height="175" muted ref={videoRef} >
