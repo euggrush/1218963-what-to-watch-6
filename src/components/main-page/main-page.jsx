@@ -8,7 +8,7 @@ const MainPage = (props) => {
   const {title, genre, date, films} = props;
 
   return (
-    <>
+    <React.Fragment>
       <section className="movie-card">
 
         <div className="movie-card__bg">
@@ -128,7 +128,7 @@ const MainPage = (props) => {
           </div>
         </footer>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 
