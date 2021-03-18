@@ -20,7 +20,7 @@ const films = [
   {
     id: 1,
     title: `Bohemian Rhapsody`,
-    genre: ``,
+    genre: `Comedies`,
     date: ``,
     runTime: ``,
     director: ``,
@@ -33,7 +33,7 @@ const films = [
   }, {
     id: 2,
     title: `Macbeth`,
-    genre: ``,
+    genre: `Crime`,
     date: ``,
     runTime: ``,
     director: ``,
@@ -46,7 +46,7 @@ const films = [
   }, {
     id: 3,
     title: `Aviator`,
-    genre: ``,
+    genre: `Documentary`,
     date: ``,
     runTime: ``,
     director: ``,
@@ -59,7 +59,7 @@ const films = [
   }, {
     id: 4,
     title: `We need to talk about Kevin`,
-    genre: ``,
+    genre: `Dramas`,
     date: ``,
     runTime: ``,
     director: ``,
@@ -72,7 +72,7 @@ const films = [
   }, {
     id: 5,
     title: `What We Do in the Shadows`,
-    genre: ``,
+    genre: `Horror`,
     date: ``,
     runTime: ``,
     director: ``,
@@ -85,7 +85,7 @@ const films = [
   }, {
     id: 6,
     title: `Revenant`,
-    genre: ``,
+    genre: `Kids & Family`,
     date: ``,
     runTime: ``,
     director: ``,
@@ -99,7 +99,7 @@ const films = [
   {
     id: 7,
     title: `Johnny English`,
-    genre: ``,
+    genre: `Romance`,
     date: ``,
     runTime: ``,
     director: ``,
