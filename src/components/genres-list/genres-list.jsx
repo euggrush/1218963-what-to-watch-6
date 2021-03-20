@@ -5,23 +5,41 @@ const GenresList = (props) => {
   const {films} = props;
   const [isActiveGenre, setActiveGenre] = useState(false);
 
-  const genres = [`All genres`, `Comedies`, `Crime`, `Documentary`, `Horror`, `Kids & Family`, `Romance`, `Sci-Fi`, `Thrillers`];
+  const filteredFilmsArray = [];
 
-  const toggleClass = () => {
-    isActiveGenre(!setActiveGenre);
+  const genres = films.map((film) => {
+    return film.genre;
+  });
+
+  const genresUnique = (arr) => {
+    return Array.from(new Set(arr));
+  };
+
+  const genreFilterHandler = (etv) => {
+    etv.preventDefault();
+    setActiveGenre(!isActiveGenre);
+
+    films.map((movie) => {
+      if (movie.genre === etv.target.textContent) {
+        filteredFilmsArray.push(movie);
+      }
+    });
   };
 
   return (
     <React.Fragment>
       <ul className="catalog__genres-list">
         {
-          genres.map((genre, id) => {
+          genresUnique(genres).map((genre, id) => {
+
             return (
               <li
                 className={`catalog__genres-item ${isActiveGenre ? `catalog__genres-item--active` : null}`}
-                onClick={toggleClass}
                 key={id}>
-                <a href="#" className="catalog__genres-link">{genre}</a>
+                <a href="#"
+                  className="catalog__genres-link"
+                  onClick={genreFilterHandler}
+                >{genre}</a>
               </li>
             );
           })
@@ -32,6 +50,7 @@ const GenresList = (props) => {
 };
 
 GenresList.propTypes = {
+  films: PropTypes.array.isRequired,
   count: PropTypes.number.isRequired,
 };
 export default GenresList;
