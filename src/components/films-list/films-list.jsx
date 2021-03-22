@@ -4,6 +4,21 @@ import PropTypes from 'prop-types';
 import filmsShape from '../../types';
 import {connect} from "react-redux";
 
+const FilmsList = ({films}) => {
+
+  return (
+    films.map((movie) => {
+      return (
+        <FilmCard key={movie.id} movie={movie} />
+      );
+    })
+  );
+};
+
+FilmsList.propTypes = {
+  films: PropTypes.arrayOf(filmsShape)
+};
+
 const getFilterMovies = (data, filter) => {
   let films = [];
   if (filter === `All genres`) {
@@ -18,19 +33,4 @@ const mapStateToProps = (state) => ({
   films: getFilterMovies(state.data, state.visibilityFilter)
 });
 
-const FilmsList = ({films}) => {
-
-  return (
-    films.map((movie) => {
-      return (
-        <FilmCard key={movie.id} movie={movie} />
-      );
-    })
-  );
-};
-
 export default connect(mapStateToProps)(FilmsList);
-
-FilmsList.propTypes = {
-  films: PropTypes.arrayOf(filmsShape)
-};

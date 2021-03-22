@@ -1,5 +1,4 @@
 import data from './data';
-// import visibilityFilter from './visibilityFilter';
 import {combineReducers} from "redux";
 
 const visibilityFilter = (state = `All genres`, action) => {

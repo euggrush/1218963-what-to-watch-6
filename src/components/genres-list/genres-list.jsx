@@ -4,25 +4,6 @@ import filmsShape from '../../types';
 import {connect} from "react-redux";
 import setVisibilityFilter from "../../actions/filter";
 
-const getFilterByGenres = (data) => {
-  let arrGenres = [`All genres`];
-  data.forEach((item) => {
-    if (arrGenres.indexOf(item.genre) === -1) {
-      arrGenres.push(item.genre);
-    }
-  });
-  return arrGenres;
-};
-
-const mapStateToProps = (state) => ({
-  genresList: getFilterByGenres(state.data),
-  active: state.visibilityFilter
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onClickHandler: (genre) => dispatch(setVisibilityFilter(genre))
-});
-
 const GenresList = ({genresList, active, onClickHandler}) => {
 
   const renderGenres = genresList.map((genre) => {
@@ -45,11 +26,30 @@ const GenresList = ({genresList, active, onClickHandler}) => {
   return <ul className="catalog__genres-list">{renderGenres}</ul>;
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GenresList);
-
 GenresList.propTypes = {
   genresList: PropTypes.arrayOf(filmsShape),
   active: PropTypes.arrayOf(filmsShape),
   onClickHandler: PropTypes.arrayOf(filmsShape),
 };
+
+const getFilterByGenres = (data) => {
+  let arrGenres = [`All genres`];
+  data.forEach((item) => {
+    if (arrGenres.indexOf(item.genre) === -1) {
+      arrGenres.push(item.genre);
+    }
+  });
+  return arrGenres;
+};
+
+const mapStateToProps = (state) => ({
+  genresList: getFilterByGenres(state.data),
+  active: state.visibilityFilter
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onClickHandler: (genre) => dispatch(setVisibilityFilter(genre))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenresList);
 
