@@ -15,32 +15,32 @@ const getFilterByGenres = (data) => {
 };
 
 const mapStateToProps = (state) => ({
-  movies: getFilterByGenres(state.data),
+  genresList: getFilterByGenres(state.data),
   active: state.visibilityFilter
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClickHandler: (movieItem) => dispatch(setVisibilityFilter(movieItem))
+  onClickHandler: (genre) => dispatch(setVisibilityFilter(genre))
 });
 
-const GenresList = ({movies, active, onClickHandler}) => {
+const GenresList = ({genresList, active, onClickHandler}) => {
 
-  console.log(movies);
+  console.log(active);
 
-  const renderGenres = movies.map((movieItem) => {
+  const renderGenres = genresList.map((genre) => {
 
     return (
 
       <li
-        className={`catalog__genres-item catalog__genres-item--active`}
-        key={movieItem}>
+        className={`catalog__genres-item ${active === genre ? `catalog__genres-item--active` : ``}`}
+        key={genre}>
         <a href="#"
-          className={`catalog__genres-link ${active === movieItem ? `catalog__genres-item--active` : ``}`}
-          onClick={() => {
+          className={`catalog__genres-link`}
+          onClick={(event) => {
             event.preventDefault();
-            onClickHandler(movieItem);
+            onClickHandler(genre);
           }}
-        >{movieItem}</a>
+        >{genre}</a>
       </li>
     );
   });
@@ -50,7 +50,7 @@ const GenresList = ({movies, active, onClickHandler}) => {
 export default connect(mapStateToProps, mapDispatchToProps)(GenresList);
 
 GenresList.propTypes = {
-  movies: PropTypes.arrayOf(filmsShape),
+  genresList: PropTypes.arrayOf(filmsShape),
   active: PropTypes.arrayOf(filmsShape),
   onClickHandler: PropTypes.arrayOf(filmsShape),
 };
