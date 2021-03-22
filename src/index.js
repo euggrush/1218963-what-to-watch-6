@@ -6,7 +6,6 @@ import films from '../src/mocks/films';
 import filmsShape from '../src/types';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import combineReducers from './reducers/reducer';
 import rootReducer from "./reducers/reducer";
 
 const store = createStore(rootReducer);

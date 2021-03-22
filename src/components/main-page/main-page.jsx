@@ -6,7 +6,7 @@ import GenresList from '../genres-list/genres-list';
 
 const MainPage = (props) => {
 
-  const {title, genre, date, films} = props;
+  const {title, genre, date} = props;
 
   return (
     <React.Fragment>
@@ -74,6 +74,8 @@ const MainPage = (props) => {
           <GenresList />
 
           <div className="catalog__movies-list">
+
+            <FilmsList />
 
           </div>
 

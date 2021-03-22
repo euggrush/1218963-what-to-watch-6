@@ -25,8 +25,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 const GenresList = ({genresList, active, onClickHandler}) => {
 
-  console.log(active);
-
   const renderGenres = genresList.map((genre) => {
 
     return (
