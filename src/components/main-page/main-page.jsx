@@ -71,11 +71,9 @@ const MainPage = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenresList films={films}/>
+          <GenresList />
 
           <div className="catalog__movies-list">
-
-            <FilmsList films={films}/>
 
           </div>
 

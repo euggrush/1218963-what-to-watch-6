@@ -1,56 +1,57 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import filmsShape from '../../types';
+import {connect} from "react-redux";
+import setVisibilityFilter from "../../actions/filter";
 
-const GenresList = (props) => {
-  const {films} = props;
-  const [isActiveGenre, setActiveGenre] = useState(false);
-
-  const filteredFilmsArray = [];
-
-  const genres = films.map((film) => {
-    return film.genre;
+const getFilterByGenres = (data) => {
+  let arrGenres = [`All genres`];
+  data.forEach((item) => {
+    if (arrGenres.indexOf(item.genre) === -1) {
+      arrGenres.push(item.genre);
+    }
   });
-
-  const genresUnique = (arr) => {
-    return Array.from(new Set(arr));
-  };
-
-  const genreFilterHandler = (etv) => {
-    etv.preventDefault();
-    setActiveGenre(!isActiveGenre);
-
-    films.map((movie) => {
-      if (movie.genre === etv.target.textContent) {
-        filteredFilmsArray.push(movie);
-      }
-    });
-  };
-
-  return (
-    <React.Fragment>
-      <ul className="catalog__genres-list">
-        {
-          genresUnique(genres).map((genre, id) => {
-
-            return (
-              <li
-                className={`catalog__genres-item ${isActiveGenre ? `catalog__genres-item--active` : null}`}
-                key={id}>
-                <a href="#"
-                  className="catalog__genres-link"
-                  onClick={genreFilterHandler}
-                >{genre}</a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </React.Fragment>
-  );
+  return arrGenres;
 };
+
+const mapStateToProps = (state) => ({
+  movies: getFilterByGenres(state.data),
+  active: state.visibilityFilter
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onClickHandler: (movieItem) => dispatch(setVisibilityFilter(movieItem))
+});
+
+const GenresList = ({movies, active, onClickHandler}) => {
+
+  console.log(movies);
+
+  const renderGenres = movies.map((movieItem) => {
+
+    return (
+
+      <li
+        className={`catalog__genres-item catalog__genres-item--active`}
+        key={movieItem}>
+        <a href="#"
+          className={`catalog__genres-link ${active === movieItem ? `catalog__genres-item--active` : ``}`}
+          onClick={() => {
+            event.preventDefault();
+            onClickHandler(movieItem);
+          }}
+        >{movieItem}</a>
+      </li>
+    );
+  });
+  return <ul className="catalog__genres-list">{renderGenres}</ul>;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenresList);
 
 GenresList.propTypes = {
-  films: PropTypes.array.isRequired,
-  count: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(filmsShape),
+  active: PropTypes.arrayOf(filmsShape),
+  onClickHandler: PropTypes.arrayOf(filmsShape),
 };
-export default GenresList;
+

@@ -4,15 +4,13 @@ import PropTypes from 'prop-types';
 import App from '../src/components/app/app';
 import films from '../src/mocks/films';
 import filmsShape from '../src/types';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {reducer} from './store/reducer';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import combineReducers from './reducers/reducer';
+import rootReducer from "./reducers/reducer";
 
-const store = createStore(
-    reducer,
-    composeWithDevTools()
-);
+const store = createStore(rootReducer);
+// console.log(store.getState());
 
 ReactDOM.render(
     <Provider store={store}>
